@@ -1,16 +1,16 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0 !important;
+    padding: 0 ;
+    box-sizing: border-box !important;
 }
 .logo {
-    width: 120px;
-    margin-left: 60px;
+    width: 10rem;
 }
 .forma {
-    margin-top: 2rem;
+    padding: 2rem;
     font-size: 2rem;
-    min-width: 98vw;
+    max-width: 98vw;
+    gap: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,6 +20,11 @@
     width: 8rem;
     background-color: rgb(99, 96, 96);
 }
+.buscar {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
 
 #lit {
     display: flex;
@@ -27,8 +32,7 @@
     justify-content: center;
     align-items: center;
     align-content: center;
-    margin: 1rem;
-    width: 90vw;
+    width: 70vw;
     height: 70vh;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
 }
@@ -36,38 +40,54 @@
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
     width: 15rem;
 }
-#move {
-    margin-left: 9.2rem;
-
-}
-#look {
-    margin-left: 14rem;
-}
 footer {
     background-color: rgb(246, 242, 242);
     height: 12vh;
-    width: 98vw;
     display: flex;
 }
 .social {
-    width: 3rem;
+    width: 2rem;
     height: 2rem;
 }
 .text{
-    width: 90vw;
+    width: 80vw;
     text-align: end;
     align-self: center;
     font-size: 1.7rem;
 }
 .red {
     width: 90vw;
-    margin-top: 0.9rem;
-    margin-left: 0.9rem;
+    padding: 2rem;
     gap: 2rem;
     display: flex;
     flex-direction: row;
+}
+.table {
+    height: 50v;
+    width: 40vw;
+    font-size: 0.9rem;
+}
+.table-responsive {
+    height: 50v;
+    width: 40vw;
+    border-collapse: collapse;
+    empty-cells: hide;
+}
 
-    
+thead th {
+    border: 0.2rem solid rgb(21, 20, 20);
+    font-size: 1.5rem;
+    padding: 0.3rem;
+    color: #3e3d3d;
+}
+
+.table,
+thead,
+tbody,
+th,
+td {
+    border: solid 0.3rem rgb(10, 10, 10);
+    color: #4c4a4b; 
 }
 @media only screen and (min-width: 319px) and (max-width: 768px) {
     .d-flex, .m-5, .gap-4 {
@@ -81,9 +101,8 @@ footer {
     #boton {
         width: 14rem;
     }
-    .res {
-        display: none;
-    }
+    /* .res {
+        /* display: none; } */
     .red {
         display: flex;
         flex-direction: column;
@@ -98,6 +117,5 @@ footer {
         min-height: 44vh;
         min-width: 17rem;
     }
-
 
 }
