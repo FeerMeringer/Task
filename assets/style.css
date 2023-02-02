@@ -89,6 +89,29 @@ td {
     border: solid 0.3rem rgb(10, 10, 10);
     color: #4c4a4b; 
 }
+.card:hover {
+    font-weight: bold;
+    font-style: oblique;
+    transform:scale(1.1);
+}
+
+.card-img-top {
+    padding: 1rem;
+    width: 12rem;
+    height: 12rem;
+}
+#boton1 {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.6rem;
+    align-items: baseline;
+}
+#textoParrafo {
+    min-height: 6rem;
+}
+
+
+
 @media only screen and (min-width: 319px) and (max-width: 768px) {
     .d-flex, .m-5, .gap-4 {
         display: flex;
@@ -96,7 +119,7 @@ td {
         
     }
     .first {
-       min-width: 17rem;
+    min-width: 17rem;
     }
     #boton {
         width: 14rem;

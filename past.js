@@ -6,9 +6,12 @@ for( let evento of dataEventos) { // recorre cada objeto
         <img src="${evento.image}" class="card-img-top p-2" alt="...">
         <div class="card-body">
         <h5> ${evento.name} </h5>
-        <p class="card-text"> ${evento.description} </p>
-        <a href="./details.html" class="btn btn-primary" id="move">Details</a>
-        </div>
+        <p class="card-text" id="textoParrafo"> ${evento.description} </p>
+        <div id="boton1">
+    <p> Price: $ ${evento.price} </p>
+    <a href="./details.html" class="btn btn-primary" id="move">Details</a>
+    </div>
+
     </div>` 
 }
 }
