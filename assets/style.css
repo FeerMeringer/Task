@@ -94,7 +94,20 @@ td {
     font-style: oblique;
     transform:scale(1.1);
 }
+#cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.tarjetaDetalles {
+    display: flex;
+    justify-content: center;
+    color: crimson;
 
+}
+h5 {
+    font-size: 2rem;
+}
 .card-img-top {
     padding: 1rem;
     width: 12rem;
@@ -109,8 +122,14 @@ td {
 #textoParrafo {
     min-height: 6rem;
 }
-
-
+.myCategory {
+    display: flex;
+    padding: 2rem;
+    font-size: 1.2rem;
+}
+section {
+    display: flex;
+} 
 
 @media only screen and (min-width: 319px) and (max-width: 768px) {
     .d-flex, .m-5, .gap-4 {

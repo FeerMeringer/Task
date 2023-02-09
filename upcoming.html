@@ -12,10 +12,10 @@
   <title> Upcoming | Amazing Events</title>
 </head>
 
-<body style="max-width: 99vw;">
+<body style="max-width: 100vw;">
   <header class="first" style="max-width: 100vw;">
     <section class="row d-flex justify-content-around p-2">
-    <div class=" row navbar navbar-expand-lg m-3" style="max-width: 100vw;">
+    <div class=" row navbar navbar-expand-lg p-2" style="max-width: 100vw;">
       <div class="navbar bg-body-tertiary container-fluid">
         <div class="row d-flex">
           <a class="navbar-brand" href="#">
@@ -47,14 +47,16 @@
         </div>
       </div>
     </div>
+  </section>
     <div class="row">
-      <h1 class=" display-1 d-flex justify-content-center" style="max-width: 100vw;"> Upcoming Events</h1>
+      <h1 class=" display-1 d-flex justify-content-center" style="max-width: 98vw;"> Upcoming Events</h1>
     </div>
-    </section>
   </header>
-  <main class="row p-5">
-    <section class="buscar d-flex p-3">
-    <div class="d-flex gap-4">
+  <main class="row p-4">
+    <section>
+    <div id="myCheck" class="myCategory"></div>
+    <!-- <section class="buscar d-flex p-3" style="max-width: 98vw;">
+    <div class="d-flex gap-3">
       <div class="form-check-inline">
         <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
         <label class="form-check-label" for="flexCheckChecked">
@@ -97,17 +99,20 @@
           Food
         </label>
       </div>
-    </div>
-    <div class="res p-2" id="look" style="width: 14rem;">
-      <form class="d-flex" role="search">
-        <input class="form-control p-2" type="search" aria-label="Buscar">
+    </div> -->
+    <!-- <div class="res" id="lookFor" style="width: 20rem; padding: 2rem;">  -->
+      <form class="d-flex" style="width: 20rem; padding: 2rem;" role="search" id="lookFor">
+        <input class="form-control p-2" type="search" aria-label="Buscar" id="buscadorForm">
         <button class="btn btn-outline-success " type="submit">Buscar</button>
       </form>
-    </div>
-  </section>
-  <div id="cards" class="d-flex flex-wrap gap-4 p-1"></div>
-    <!-- <div class="row gap-4 p-2">
-      <div class="card" style="width: 18rem;">
+    </section>
+    <!-- </div> -->
+  <!-- </section>  -->
+
+  <div id="cards" class="d-flex gap-4 p-2"></div>
+    
+    <!-- <div class="row"> -->
+      <!-- <div class="card" style="width: 18rem;">
         <img src="assets/images/Cine7.jpg" class="card-img-top p-2" alt="...">
         <div class="card-body">
           <p class="card-text"> Marvel's Avengers 3d premiere the start of an epic saga with your best superheroes.</p>
@@ -136,7 +141,7 @@
         </div>
       </div>
     </div>
-    <div class="row gap-4 p-3">
+    <div class="row gap-4 p-2">
       <div class="card" style="width: 18rem;">
         <img src="assets/images/Maraton3.jpg" class="card-img-top p-2" alt="...">
         <div class="card-body">
@@ -160,10 +165,10 @@
           <a href="./details.html" class="btn btn-primary" id="move"> Details</a>
         </div>
       </div>
-    </div>
     </div> -->
+    <!-- </div> -->
   </main>
-  <footer>
+  <footer style="max-width: 99vw;">
     <div class="red">
     <img class="social" src="./assets/images/insta.png" alt="Redes Sociales">
     <img class="social" src="./assets/images/face.png" alt="Redes Sociales">
@@ -174,10 +179,12 @@
 
 
   <script src="./data.js"></script>
-  <script src="./upcoming.js"></script>
+  <script src="./upcoming.js "></script>
+  <script src="./datails.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
+    
 </body>
 
 </html>
