@@ -63,11 +63,20 @@ function filtradoDeBuscador(buscar, dataEventos){
     }
     return buscadorFiltrado;
 }
+function mensaje(dataEventos, cards) {
+    if(dataEventos.length === 0) {
+        cards.innerHTML = `<p class="not"> NOT FOUND </p>`
+    } else {
+        return crearCards(dataEventos, cards);
+    }
+}
+
 
 buscador.addEventListener('keyup', (e)=>{
     e.preventDefault()
     let buscar = buscador[0].value.toLowerCase();
     let funcionFiltrado = filtradoDeBuscador(buscar, dataEventos);
     let checkCardFiltro = filtroCheck(funcionFiltrado);
-    crearCards(checkCardFiltro)
+    crearCards(checkCardFiltro);
+    mensaje(checkCardFiltro, cards);
 });

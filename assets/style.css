@@ -129,7 +129,16 @@ h5 {
 }
 section {
     display: flex;
+    flex-wrap: wrap;
 } 
+.not{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color:crimson;
+    font-size: 5rem;
+    width: 80rem;
+}
 
 @media only screen and (min-width: 319px) and (max-width: 768px) {
     .d-flex, .m-5, .gap-4 {
@@ -159,5 +168,17 @@ section {
         min-height: 44vh;
         min-width: 17rem;
     }
+    #navMove {
+        display: flex;
+        justify-content: center;
 
+    }
+
+}
+@media only screen and (min-width: 767px) and (max-width: 1024px) {
+    
+    #boton {
+        width: 30rem;
+
+    
 }

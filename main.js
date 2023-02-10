@@ -17,8 +17,11 @@ function crearCards( dataEventos ) {
     </div>
 </div>`
     }
-    tarjeta.innerHTML = card;
+    tarjeta.innerHTML = card ;
 }
+
+
+
 
 const check = document.getElementById("myCheck");
 
@@ -58,9 +61,16 @@ const buscador = document.getElementById("lookFor");
 function filtradoDeBuscador(buscar, dataEventos){
     let buscadorFiltrado = dataEventos.filter(buscadorInterno => buscadorInterno.name.toLowerCase().includes(buscar))
     if(buscadorFiltrado.length === 0){
-        
+
     }
     return buscadorFiltrado;
+}
+function mensaje(dataEventos, cards) {
+    if(dataEventos.length === 0) {
+        cards.innerHTML = `<p class="not"> NOT FOUND </p>`
+    } else {
+        return crearCards(dataEventos, cards);
+    }
 }
 
 buscador.addEventListener('keyup', (e)=>{
@@ -68,7 +78,10 @@ buscador.addEventListener('keyup', (e)=>{
     let buscar = buscador[0].value.toLowerCase();
     let funcionFiltrado = filtradoDeBuscador(buscar, dataEventos);
     let checkCardFiltro = filtroCheck(funcionFiltrado);
-    crearCards(checkCardFiltro)
+    crearCards(checkCardFiltro);
+    mensaje(checkCardFiltro, cards);
+
 });
+
 
 
