@@ -1,82 +1,30 @@
+import { crearCards, crearCheck, filtroCheck, filtradoDeBuscador, mensaje } from './module/funciones.js'
 const tarjeta = document.getElementById ("cards");
-const dataEventos = data.events;
-
-crearCards(dataEventos);
-function crearCards( dataEventos ) {
-    let card = "";
-    for (let evento of dataEventos) {
-    card += `<div class="card" style="width: 18rem;">
-    <img src="${evento.image}" class="card-img-top p-2" alt="...">
-    <div class="card-body">
-    <h5> ${evento.name} </h5>
-    <p class="card-text" id="textoParrafo"> ${evento.description} </p>
-    <div id="boton1">
-    <p> Price: $ ${evento.price} </p>
-    <a href="./details.html?id=${evento._id}&name=${evento.name}" class="btn btn-primary" id="move">Details</a>
-    </div>
-    </div>
-</div>`
-    }
-    tarjeta.innerHTML = card ;
-}
-
-
-
-
 const check = document.getElementById("myCheck");
-
-const filtrarCategorias  = [ ... new Set ( dataEventos.map( categoria => categoria.category)) ];
-
-function crearCheck ( filtrarCategorias , elemento) { 
-    let aux = "";
-    filtrarCategorias.forEach(element =>  {
-        aux += ` <div class="d-flex  gap-3">
-        <div class="form-check-inline">
-        <input class="form-check-input" type="checkbox" value="${element}" id="${element}">
-        <label class="form-check-label" for="${element}">
-        ${element}
-        </label>
-        </div> `
-    });
-    elemento.innerHTML = aux;
-}
-crearCheck( filtrarCategorias, check);
-
-function filtroCheck (evento) {
-    let marcarCheck = [...document.querySelectorAll("input[type='checkbox']:checked"),].map((check) => check.value);
-    if (marcarCheck.length === 0) {
-        return evento;
-    }
-    return evento.filter((filterCheck) => marcarCheck.includes(filterCheck.category));
-    }
+const buscador = document.getElementById("lookFor");
+let events;
+fetch ("https://mindhub-xj03.onrender.com/api/amazing")
+    .then( data => data.json())
+    .then( response => {     
+    events = response.events;
+    crearCards(events, tarjeta)
+    const filtrarCategorias = [ ... new Set ( events.map( categoria => categoria.category)) ];
+    crearCheck(filtrarCategorias, check);
+    filtroCheck(events);
+    filtradoDeBuscador(events)
+    })
     
+    .catch ( err => console.log(err))
 
 check.addEventListener( "change" ,  () => {
-    let aux = filtroCheck(dataEventos);
+    let aux = filtroCheck(events);
     crearCards(aux);
 } );
-
-const buscador = document.getElementById("lookFor");
-
-function filtradoDeBuscador(buscar, dataEventos){
-    let buscadorFiltrado = dataEventos.filter(buscadorInterno => buscadorInterno.name.toLowerCase().includes(buscar))
-    if(buscadorFiltrado.length === 0){
-
-    }
-    return buscadorFiltrado;
-}
-function mensaje(dataEventos, cards) {
-    if(dataEventos.length === 0) {
-        cards.innerHTML = `<p class="not"> NOT FOUND </p>`
-    } else {
-        return crearCards(dataEventos, cards);
-    }
-}
 
 buscador.addEventListener('keyup', (e)=>{
     e.preventDefault()
     let buscar = buscador[0].value.toLowerCase();
-    let funcionFiltrado = filtradoDeBuscador(buscar, dataEventos);
+    let funcionFiltrado = filtradoDeBuscador(events, buscar);
     let checkCardFiltro = filtroCheck(funcionFiltrado);
     crearCards(checkCardFiltro);
     mensaje(checkCardFiltro, cards);
