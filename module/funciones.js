@@ -1,9 +1,10 @@
-export function crearCards(dataEventos) {
-    const tarjeta = document.getElementById ("cards");
-    let card = "";
+export function crearCards(dataEventos, tarjeta) {
+    if(dataEventos.length === 0) {
+        return  tarjeta.innerHTML = `<p class="not"> NOT FOUND </p>`
+    } 
     for (let evento of dataEventos) {
-    card += `<div class="card" style="width: 18rem;">
-    <img src="${evento.image}" class="card-img-top p-2" alt="...">
+    tarjeta.innerHTML += `<div class="card" style="width: 18rem;">
+    <img src="${evento.image}" class="card-img-top p-2" alt="${evento.name}">
     <div class="card-body">
     <h5> ${evento.name} </h5>
     <p class="card-text" id="textoParrafo"> ${evento.description} </p>
@@ -14,9 +15,7 @@ export function crearCards(dataEventos) {
     </div>
 </div>`
     }
-    tarjeta.innerHTML = card ;
 }
-
 
 export function crearCheck ( filtrarCategorias , elemento) { 
     let aux = "";
@@ -45,50 +44,6 @@ export function filtradoDeBuscador(eventos, buscar){
     return buscadorFiltrado;
 }
 
-export function mensaje(dataEventos, cards) {
-    if(dataEventos.length === 0) {
-        cards.innerHTML = `<p class="not"> NOT FOUND </p>`
-    } else {
-        return crearCards(dataEventos, cards);
-    }
-}
-
-export function creandoCards( evento, date, tarjeta ) { 
-    let card = "";
-    for (let eventos of evento)
-    if (date < eventos.date) {
-        card += `<div class="card" style="width: 18rem;">
-    <img src="${eventos.image}" class="card-img-top p-2" alt="...">
-    <div class="card-body">
-    <h5> ${eventos.name} </h5>
-    <p class="card-text" id="textoParrafo"> ${eventos.description} </p>
-    <div id="boton1">
-    <p> Price: $ ${eventos.price} </p>
-    <a href="./details.html?id=${eventos._id}&name=${eventos.name}" class="btn btn-primary" id="move">Details</a>
-    </div>
-    </div>
-</div>`
-    }
-    tarjeta.innerHTML = card;
-}
-export function pastCards( evento, date, tarjeta ) { 
-    let card = "";
-    for (let eventos of evento)
-    if (date > eventos.date) {
-        card += `<div class="card" style="width: 18rem;">
-    <img src="${eventos.image}" class="card-img-top p-2" alt="...">
-    <div class="card-body">
-    <h5> ${eventos.name} </h5>
-    <p class="card-text" id="textoParrafo"> ${eventos.description} </p>
-    <div id="boton1">
-    <p> Price: $ ${eventos.price} </p>
-    <a href="./details.html?id=${eventos._id}&name=${eventos.name}" class="btn btn-primary" id="move">Details</a>
-    </div>
-    </div>
-</div>`
-    }
-    tarjeta.innerHTML = card;
-}
 
 export function creatDetails(tarjeta, eventos) {
 

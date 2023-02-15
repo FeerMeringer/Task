@@ -1,4 +1,4 @@
-import { crearCards, crearCheck, filtroCheck, filtradoDeBuscador, mensaje } from './module/funciones.js'
+import { crearCards, crearCheck, filtroCheck, filtradoDeBuscador } from './module/funciones.js'
 const tarjeta = document.getElementById ("cards");
 const check = document.getElementById("myCheck");
 const buscador = document.getElementById("lookFor");
@@ -10,26 +10,31 @@ fetch ("https://mindhub-xj03.onrender.com/api/amazing")
     crearCards(events, tarjeta)
     const filtrarCategorias = [ ... new Set ( events.map( categoria => categoria.category)) ];
     crearCheck(filtrarCategorias, check);
-    filtroCheck(events);
-    filtradoDeBuscador(events)
+
+    check.addEventListener( "change" ,  () => {
+        tarjeta.innerHTML = "";
+        let buscar = buscador[0].value.toLowerCase();
+        let checkCardFiltro = filtradoDeBuscador(events, buscar)
+        let aux = filtroCheck(checkCardFiltro);
+        console.log(aux)
+        crearCards(aux, tarjeta);
+    } );
+    
+    buscador.addEventListener('keyup', (e)=>{
+        tarjeta.innerHTML = "";
+        let buscar = buscador[0].value.toLowerCase();
+        let checkCardFiltro = filtradoDeBuscador(events, buscar);
+        let aux = filtroCheck(checkCardFiltro);
+        console.log(aux);
+        crearCards(aux, tarjeta);
+        
+    
+    });
     })
     
-    .catch ( err => console.log(err))
+    .catch ( err => console.log("Este es el error"), err);
 
-check.addEventListener( "change" ,  () => {
-    let aux = filtroCheck(events);
-    crearCards(aux);
-} );
 
-buscador.addEventListener('keyup', (e)=>{
-    e.preventDefault()
-    let buscar = buscador[0].value.toLowerCase();
-    let funcionFiltrado = filtradoDeBuscador(events, buscar);
-    let checkCardFiltro = filtroCheck(funcionFiltrado);
-    crearCards(checkCardFiltro);
-    mensaje(checkCardFiltro, cards);
-
-});
 
 
 

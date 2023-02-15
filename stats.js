@@ -2,8 +2,7 @@ const table1 = document.getElementById('table1')
 const table2 = document.getElementById('table2')
 const table3 = document.getElementById('table3')
 
-//API
-async function jsonEvents(){
+async function dataEvents(){
     try{
     var events = await fetch('https://mindhub-xj03.onrender.com/api/amazing')
     events = await events.json()
@@ -85,10 +84,10 @@ async function jsonEvents(){
                         });
                         
         table1.innerHTML += `<tr>
-                                <td>${maxPercAssi.name}: ${maxPercAssi.porcentajeAsistencia}%</td>
+                                <td>${maxPercAssi.name}: ${parseInt(maxPercAssi.porcentajeAsistencia)}%</td>
                                 <td>${minPercAssi.name}: ${minPercAssi.porcentajeAsistencia}%</td>
                                 <td>${maxCapEvent.name}: ${parseInt(maxCapEvent.capacity)}</td>
                             </tr>`
 }
 
-jsonEvents()
+dataEvents()

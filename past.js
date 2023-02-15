@@ -1,4 +1,4 @@
-import { pastCards, crearCheck, filtroCheck, filtradoDeBuscador, mensaje } from './module/funciones.js'
+import { crearCards, crearCheck, filtroCheck, filtradoDeBuscador } from './module/funciones.js'
 
 const tarjeta = document.getElementById ("cards");
 const check = document.getElementById("myCheck");
@@ -9,32 +9,30 @@ let events;
 fetch ("https://mindhub-xj03.onrender.com/api/amazing")
 .then( data => data.json())
 .then ( response  => {
-    events = response.events;
-    date = response.currentDate;
-    pastCards(events, date, tarjeta);
+    const events = response.events.filter( eventos => eventos.date < response.currentDate); 
+    crearCards(events, tarjeta)
     const filtrarCategorias = [ ... new Set ( events.map( categoria => categoria.category)) ];
     crearCheck(filtrarCategorias, check);
-    filtroCheck(events);
-    filtradoDeBuscador(events, buscar);
-    mensaje(events)
+    check.addEventListener( "change" ,  () => {
+        tarjeta.innerHTML = "";
+        let buscar = buscador[0].value.toLowerCase();
+        let checkCardFiltro = filtradoDeBuscador(events, buscar)
+        let aux = filtroCheck(checkCardFiltro);
+        console.log(aux)
+        crearCards(aux, tarjeta);
+    } );
     
-});
-
-
-
-
-check.addEventListener( "change" ,  () => {
-    let aux = filtroCheck(events)
-    pastCards(aux,date,tarjeta );
-});
-    
-buscador.addEventListener('keyup', (e)=>{
-    e.preventDefault()
-    let buscar = buscador[0].value.toLowerCase();
-    let funcionFiltrado = filtradoDeBuscador(date, buscar);
-    let checkCardFiltro = filtroCheck(funcionFiltrado);
-    pastCards(checkCardFiltro, date, tarjeta);
-    mensaje(checkCardFiltro, tarjeta, cards);
+    buscador.addEventListener('keyup', (e)=>{
+        tarjeta.innerHTML = "";
+        let buscar = buscador[0].value.toLowerCase();
+        let checkCardFiltro = filtradoDeBuscador(events, buscar);
+        let aux = filtroCheck(checkCardFiltro);
+        console.log(aux);
+        crearCards(aux, tarjeta);
+        
     
     });
+    })
     
+    .catch ( err => console.log("Este es el error"), err);
+
